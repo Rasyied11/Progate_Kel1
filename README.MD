@@ -5,4 +5,4 @@
 
 # Run 
 
-### npx expo atau npm run androids
+### npx expo atau npm run android
