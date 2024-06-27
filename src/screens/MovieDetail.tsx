@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, ScrollView, ImageBackground } from 'react-nativ
 import { API_ACCESS_TOKEN } from '@env';
 import MovieList from '../components/movies/MovieList';
 import { FontAwesome } from '@expo/vector-icons';
-import type { Movie } from '../types/app';  // Import the Movie type
+import type { Movie } from '../types/app'; 
 
 const MovieDetail = ({ route }: any): JSX.Element => {
   const { id } = route.params;
