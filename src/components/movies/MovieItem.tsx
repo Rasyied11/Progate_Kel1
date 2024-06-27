@@ -1,43 +1,45 @@
 import React from 'react'
-import { ImageBackground, Text, StyleSheet, View, TouchableOpacity, } from 'react-native'
-import { useNavigation, StackActions } from '@react-navigation/native'
+import { ImageBackground, Text, StyleSheet, View, TouchableOpacity } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import type { MovieItemProps } from '../../types/app'
+import { useNavigation } from '@react-navigation/native';
+import { StackActions } from '@react-navigation/native';
+
 
 const MovieItem = ({ movie, size, coverType }: MovieItemProps): JSX.Element => {
     const navigation = useNavigation()
     const pushAction = StackActions.push('MovieDetail', { id: movie.id })
-    return (
-        <TouchableOpacity 
-            onPress={() => {
-                navigation.dispatch(pushAction)
-            }}
+  return (
+    <TouchableOpacity
+     onPress={() => {
+       navigation.dispatch(pushAction)
+     }}
+   >
+      <ImageBackground
+        resizeMode="cover"
+        style={[size, styles.backgroundImage]}
+        imageStyle={styles.backgroundImageStyle}
+        source={{
+          uri: `https://image.tmdb.org/t/p/w500${
+            coverType === 'backdrop' ? movie.backdrop_path : movie.poster_path
+          }`,
+        }}
+      >
+        <LinearGradient
+          colors={['#00000000', 'rgba(0, 0, 0, 0.7)']}
+          locations={[0.6, 0.8]}
+          style={styles.gradientStyle}
         >
-        <ImageBackground
-            resizeMode="cover"
-            style={[size, styles.backgroundImage]}
-            imageStyle={styles.backgroundImageStyle}
-            source={{
-            uri: `https://image.tmdb.org/t/p/w500${
-                coverType === 'backdrop' ? movie.backdrop_path : movie.poster_path
-            }`,
-            }}
-        >
-            <LinearGradient
-            colors={['#00000000', 'rgba(0, 0, 0, 0.7)']}
-            locations={[0.6, 0.8]}
-            style={styles.gradientStyle}
-            >
-            <Text style={styles.movieTitle}>{movie.title}</Text>
-            <View style={styles.ratingContainer}>
-                <FontAwesome name="star" size={16} color="yellow" />
-                <Text style={styles.rating}>{movie.vote_average.toFixed(1)}</Text>
-            </View>
-            </LinearGradient>
-        </ImageBackground>
-        </TouchableOpacity>
-    )
+          <Text style={styles.movieTitle}>{movie.title}</Text>
+          <View style={styles.ratingContainer}>
+            <FontAwesome name="star" size={16} color="yellow" />
+            <Text style={styles.rating}>{movie.vote_average.toFixed(1)}</Text>
+          </View>
+        </LinearGradient>
+      </ImageBackground>
+    </TouchableOpacity>
+  )
 }
 
 const styles = StyleSheet.create({

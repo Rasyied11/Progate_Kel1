@@ -35,4 +35,4 @@ yarn-error.*
 *.tsbuildinfo
 
 # # environment
-# .env
+.env

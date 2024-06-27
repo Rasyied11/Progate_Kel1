@@ -1,11 +1,11 @@
-import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Feather } from '@expo/vector-icons'
-import HomeStackNavigator from './HomeStackNavigation'
-import Search from '../screens/Search'
-import Favorite from '../screens/Favorite'
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Feather } from '@expo/vector-icons';
+import HomeStackNavigator from './HomeStackNavigation';
+import Search from '../screens/Search';
+import Favorite from '../screens/Favorite';
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = (): JSX.Element => (
   <Tab.Navigator>
@@ -40,6 +40,6 @@ const BottomTabNavigator = (): JSX.Element => (
       }}
     />
   </Tab.Navigator>
-)
+);
 
-export default BottomTabNavigator
+export default BottomTabNavigator;
