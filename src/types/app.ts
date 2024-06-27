@@ -1,9 +1,3 @@
-export interface MovieListProps {
-    title: string
-    path: string
-    coverType: 'poster' | 'backdrop'
-  }
-  
 export interface Movie {
     backdrop_path: string
     genres: { id: number; name: string }
@@ -38,6 +32,12 @@ export interface Movie {
     video: boolean
     vote_average: number
     vote_count: number
+  }
+
+  export interface MovieListProps {
+    title: string
+    path: string
+    coverType: 'poster' | 'backdrop'
   }
 
   export interface MovieItemProps {
