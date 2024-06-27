@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import type { MovieListProps, Movie } from '../../types/app'
 import { API_ACCESS_TOKEN } from '@env'
 import MovieItem from './MovieItem'
+import { FlatList } from 'react-native';
 
 const coverImageSize = {
     backdrop: {
@@ -13,7 +14,7 @@ const coverImageSize = {
       width: 100,
       height: 160,
     },
-}
+  }
 
 const MovieList = ({ title, path, coverType }: MovieListProps): JSX.Element => {
   const [movies, setMovies] = useState<Movie[]>([])
@@ -42,6 +43,7 @@ const MovieList = ({ title, path, coverType }: MovieListProps): JSX.Element => {
       })
   }
 
+  console.log(movies)
 
   return (
     <View>
@@ -57,16 +59,17 @@ const MovieList = ({ title, path, coverType }: MovieListProps): JSX.Element => {
         showsHorizontalScrollIndicator={false}
         horizontal
         data={movies}
-        renderItem={({ item } : any) => (
+        renderItem={({ item }) => (
           <MovieItem
             movie={item}
             size={coverImageSize[coverType]}
             coverType={coverType}
           />
         )}
-        keyExtractor={(item : any) => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
       />
     </View>
+    
   )
 }
 
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#8978A4',
+    backgroundColor: '#2f9bec',
     marginRight: 12,
   },
   title: {

@@ -16,7 +16,7 @@ const Search = (): JSX.Element => {
               activeOpacity={0.9}
               style={{
                 ...styles.topBar,
-                backgroundColor: item === selectedBar ? '#8978A4' : '#C0B4D5',
+                backgroundColor: item === selectedBar ? '#2f9bec' : '#75bef4',
                 borderTopLeftRadius: index === 0 ? 100 : 0,
                 borderBottomLeftRadius: index === 0 ? 100 : 0,
                 borderTopRightRadius: index === 1 ? 100 : 0,
