@@ -4,6 +4,7 @@ import { TextInput, View, Text, TouchableOpacity, StyleSheet } from 'react-nativ
 import KeywordSearch from '../components/search/KeywordSearch'
 import CategorySearch from '../components/search/CategorySearch'
 import { FontAwesome } from '@expo/vector-icons';
+import SearchList from '../components/search/SearchList';
 
 const handleSearch = ():any =>{
 
@@ -37,10 +38,11 @@ const Search = (): JSX.Element => {
           ))}
         </View>
         {selectedBar === 'keyword' ? <KeywordSearch /> : <CategorySearch />}
-        <TextInput 
-        onChangeText={handleTextDebounce} 
-        placeholder="Input title movie here" 
-        placeholderTextColor={'gray'} 
+        <TextInput
+          style={styles.input} 
+          onChangeText={handleTextDebounce} 
+          placeholder="Input title movie here" 
+          placeholderTextColor={'gray'} 
         />
       </View>
     </View>
@@ -67,6 +69,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400',
     textTransform: 'capitalize',
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 })
 
