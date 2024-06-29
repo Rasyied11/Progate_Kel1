@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import React, { useCallback,useState, useEffect } from 'react'
+import { debounce } from "lodash";
+import { TextInput, View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import KeywordSearch from '../components/search/KeywordSearch'
 import CategorySearch from '../components/search/CategorySearch'
+import { FontAwesome } from '@expo/vector-icons';
+
+const handleSearch = ():any =>{
+
+}
 
 const Search = (): JSX.Element => {
   const [selectedBar, setSelectedBar] = useState<string>('keyword')
-
+  const handleTextDebounce = useCallback(debounce(handleSearch, 1200), []);
   return (
     <View style={styles.container}>
-      <View>
+      <View>  
         <View style={styles.topBarContainer}>
           {['keyword', 'category'].map((item: string, index: number) => (
             <TouchableOpacity
@@ -31,6 +37,11 @@ const Search = (): JSX.Element => {
           ))}
         </View>
         {selectedBar === 'keyword' ? <KeywordSearch /> : <CategorySearch />}
+        <TextInput 
+        onChangeText={handleTextDebounce} 
+        placeholder="Input title movie here" 
+        placeholderTextColor={'gray'} 
+        />
       </View>
     </View>
   )
