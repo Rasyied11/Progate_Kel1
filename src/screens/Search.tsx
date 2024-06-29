@@ -38,12 +38,6 @@ const Search = (): JSX.Element => {
           ))}
         </View>
         {selectedBar === 'keyword' ? <KeywordSearch /> : <CategorySearch />}
-        <TextInput
-          style={styles.input} 
-          onChangeText={handleTextDebounce} 
-          placeholder="Input title movie here" 
-          placeholderTextColor={'gray'} 
-        />
       </View>
     </View>
   )
@@ -69,12 +63,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '400',
     textTransform: 'capitalize',
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
   },
 })
 
