@@ -4,7 +4,6 @@ import { TextInput, View, Text, TouchableOpacity, StyleSheet } from 'react-nativ
 import KeywordSearch from '../components/search/KeywordSearch'
 import CategorySearch from '../components/search/CategorySearch'
 import { FontAwesome } from '@expo/vector-icons';
-import SearchList from '../components/search/SearchList';
 
 const handleSearch = ():any =>{
 

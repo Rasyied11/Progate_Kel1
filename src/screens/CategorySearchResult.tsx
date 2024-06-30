@@ -8,7 +8,7 @@ interface Genre {
   name: string
 }
 
-export default function CategoryResults({route}): JSX.Element {
+export default function CategoryResults({ route }: any ): JSX.Element {
   const {genre} = route.params as {genre: Genre}
 
   const [movieByGenreList, setMovieByGenreList] = useState([])
@@ -47,7 +47,7 @@ export default function CategoryResults({route}): JSX.Element {
             <MovieItem movie={item} size={{width: 95, height: 160}} coverType="poster" />
           </TouchableOpacity>
         )}
-        keyExtractor={(item) => `${item.id}`}
+        // keyExtractor={(item) => `${item.id}`}
         numColumns={3}
         contentContainerStyle={styles.list}
         showsVerticalScrollIndicator={false}
