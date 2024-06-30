@@ -84,6 +84,8 @@ const MovieDetail = ({ route }: any): JSX.Element => {
       addFavorite(movie).then(() => setIsFavorite(true))
     }
   }
+
+  //Check Is Favorite
   const checkIsFavorite = async (id: number): Promise<boolean> => {
     try {
       const initialData: string | null = await AsyncStorage.getItem('@FavoriteList')

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Text, FlatList, StyleSheet, TouchableOpacity, View} from 'react-native'
-import MovieItem from '../components/movies/MovieItem'
+import MovieItem from '../movies/MovieItem'
 import {API_ACCESS_TOKEN} from '@env'
 
 interface Genre {
@@ -48,7 +48,7 @@ export default function CategoryResults({ route }: any ): JSX.Element {
           </TouchableOpacity>
         )}
         // keyExtractor={(item) => `${item.id}`}
-        numColumns={3}
+        numColumns={2}
         contentContainerStyle={styles.list}
         showsVerticalScrollIndicator={false}
       />

@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
-import {View, TextInput, StyleSheet, FlatList, TouchableOpacity} from 'react-native'
+import { View, TextInput, StyleSheet, FlatList, TouchableOpacity, Text} from 'react-native'
 import {AntDesign} from '@expo/vector-icons'
 import {API_ACCESS_TOKEN} from '@env'
 import {Movie} from '../../types/app'
 import MovieItem from '../movies/MovieItem'
+import { useNavigation, StackActions } from '@react-navigation/native'
 
 export default function KeywordSearch(): JSX.Element {
   const [keyword, setKeyword] = useState<string>('')
   const [movieSearchResult, setMovieSearchResult] = useState<Movie[]>([])
+  const navigation = useNavigation();
 
   const handleOnChangeText = (text: string) => {
     setKeyword(text)
@@ -43,15 +45,20 @@ export default function KeywordSearch(): JSX.Element {
           onChangeText={handleOnChangeText}
           onSubmitEditing={handleOnSubmitEditing}
         />
-        <AntDesign style={styles.iconSearch} name="search1" size={24} />
+        <TouchableOpacity onPress={handleOnSubmitEditing}>
+            <AntDesign style={styles.iconSearch} name="search1" size={18} />
+        </TouchableOpacity>
       </View>
       <View style={styles.searchMovieResultContainer}>
         <FlatList
           data={movieSearchResult}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({item}) => (
-            <TouchableOpacity style={styles.movieItemContainer}>
+            <TouchableOpacity 
+            style={styles.movieItemContainer}
+            >
               <MovieItem movie={item} size={{width: 95, height: 160}} coverType="poster" />
+              
             </TouchableOpacity>
           )}
           contentContainerStyle={styles.movieList}
@@ -74,17 +81,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 16,
+    marginBottom: 16,
     position: 'relative',
   },
   searchInput: {
     width: '100%',
-    height: 60,
+    height: 45,
     backgroundColor: '#e6e6e6',
     borderRadius: 100,
     paddingLeft: 20,
   },
   iconSearch: {
     right: 5,
+    margin: -10,
     position: 'absolute',
     paddingRight: 20,
   },
